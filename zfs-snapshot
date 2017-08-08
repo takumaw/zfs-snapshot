@@ -1,0 +1,3 @@
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+
+0 5 * * * root /PATH_TO_YOUR_DIRECTORY/zfs-snapshot.sh
