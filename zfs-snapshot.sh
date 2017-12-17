@@ -36,9 +36,9 @@ do
     if [[ $ZFS_KEEP_SNAPSHOTS_ != "ALL" ]]
     then
       /sbin/zfs list -H -o name -t snapshot -r -d 1 "$ZFS" \
-      | sort -r | tail -n +$(($ZFS_KEEP_SNAPSHOTS + 1)) | while read ZFS_SNAPSHOT
+      | sort -r | tail -n +$(($ZFS_KEEP_SNAPSHOTS_ + 1)) | while read ZFS_SNAPSHOT_
       do
-        /sbin/zfs destroy "$ZFS_SNAPSHOT"
+        /sbin/zfs destroy "$ZFS_SNAPSHOT_"
       done
     fi
   done
