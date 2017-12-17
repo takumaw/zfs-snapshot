@@ -14,7 +14,7 @@ do
     # Take a snapshot
     if [ ! -e "$ZFS_MOUNTPOINT/.zfsignore" ]
     then
-      echo -n #/sbin/zfs snapshot "$ZFS@$TIMESTAMP"
+      /sbin/zfs snapshot "$ZFS@$TIMESTAMP"
     fi
 
     # Remove old snapshots
@@ -36,7 +36,7 @@ do
     if [[ $ZFS_KEEP_SNAPSHOTS_ != "ALL" ]]
     then
       /sbin/zfs list -H -o name -t snapshot -r -d 1 "$ZFS" \
-      | sort -r | tail -n +$ZFS_KEEP_SNAPSHOTS | while read ZFS_SNAPSHOT
+      | sort -r | tail -n +$(($ZFS_KEEP_SNAPSHOTS + 1)) | while read ZFS_SNAPSHOT
       do
         /sbin/zfs destroy "$ZFS_SNAPSHOT"
       done
