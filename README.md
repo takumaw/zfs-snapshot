@@ -4,7 +4,9 @@
 
 ## Usage
 
-Add `zfs-snapshot` to your `/etc/cron.d`. Modify the script path to your installation directory.
+Add `zfs-snapshot.sh` to your `/etc/cron.daily`. Modify the script path to your installation directory.
+
+You can also add `zpool-scrub.sh` to your `/etc/cron.weekly` to enable weekly scrubbing.
 
 The script takes a snapshot named `YYYY-MM-DD`, then deletes snapshots older than 7 days by default.
 You can specify `ZFS_KEEP_SNAPSHOTS` environmental variable to change the number of snapshots to be kept.
